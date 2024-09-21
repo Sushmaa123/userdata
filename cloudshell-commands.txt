@@ -1,0 +1,37 @@
+s3:
+
+list of Buckets : aws s3 ls
+Create a S3 bucket : aws s3 mb s3://your-bucket-name
+Delete a S3 bucket : aws s3 rb s3://your-bucket-name
+Upload a file to S3 bucket : aws s3 cp your-file.txt s3://your-bucket-name/
+Download a file from S3: aws s3 cp s3://your-bucket-name/your-file.txt Directory path
+Delete a file in S3 bucket : aws s3 rm s3://your-bucket-name/filename
+
+EC2:
+
+List EC2 instances: aws ec2 describe-instances
+Create an EC2 instance : aws ec2 run-instances --image-id your-ami-id --instance-type
+t2.micro --key-name your-key-pair-name --tag-specifications
+‘ResourceType=instance,Tags=[{Key=Name,Value="YourInstanceName"}]'
+Stop EC2 instances : aws ec2 stop-instances --instance-ids your-instance-id
+Start EC2 instances: aws ec2 start-instances --instance-ids your-instance-id
+Terminate EC2 instances : aws ec2 terminate-instances --instance-ids your-instance-id
+
+Lambda:
+
+List lambda functions : aws lambda list-functions
+Create a Lambda Function: aws lambda create-function --function-name your-functionname --runtime python3.8 --role your-role-arn --handler your-handler-name --zip-file
+fileb://your-function-code.zip
+Create Lambda Function (s3) : aws lambda create-function --function-name yourfunction-name --runtime python3.8 --role your-role-arn --handler your-handler-name
+--code S3Bucket= your-s3bucket-name, S3Key=lambda_function.zip
+
+IAM:
+
+List of IAM users: aws iam list-users
+Create an IAM User: aws iam create-user --user-name your-username
+Attach a policy to IAM user: aws iam attach-user-policy --user-name your-username --
+policy-arn your-policy-arn
+
+VPC:
+List of VPC: aws ec2 describe-vpcs
+Create VPC: aws ec2 create-vpc --cidr-block 10.0.0.0/16
