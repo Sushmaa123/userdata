@@ -1,0 +1,20 @@
+step1: To stop jenkins server
+cmd: sudo systemctl stop jenkins
+
+step2: to switch to root user and root directory
+cmd: sudo su && cd /
+
+step3: unmount the tmp directory
+cmd: umount /tmp
+
+step4: Editing "fstab" file and adding the following line  
+cmd: sudo nano /etc/fstab 
+ONCE THE EDITOR OPENS ADD THE FOLLOWING LINE AT THE BOTTOM 
+tmpfs /tmp tmpfs   defaults,size=2G  0 0
+save and exit the file
+
+step5:Mounting the tmp directory 
+Cmd: sudo mount /tmp
+
+step6:Start the jenkins service 
+Cmd: systemctl start jenkins
