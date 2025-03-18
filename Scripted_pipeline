@@ -1,0 +1,35 @@
+node {
+    
+     MAVEN_HOME = tool 'maven'
+    // Default build result to SUCCESS
+    currentBuild.result = 'SUCCESS'
+
+    stage('Git Checkout') {
+        git 'https://github.com/Sushmaa123/Chat_Room.git'
+    }
+
+    stage('Compile') {
+        bat 'mvn compile'
+    }
+
+    stage('Build') {
+        bat 'mvn package'
+    }
+}
+
+// Email Notification (Executed Only for SUCCESS or FAILURE)
+node {
+    if (currentBuild.result == 'SUCCESS' || currentBuild.result == 'FAILURE') {
+        emailext(
+            to: 'sushmaananda999@gmail.com',
+            subject: "${currentBuild.result}: Build #${env.BUILD_NUMBER} - ${env.JOB_NAME}",
+            body: """
+                <h2>Build ${currentBuild.result}</h2>
+                <p>Jenkins Job: ${env.JOB_NAME}</p>
+                <p>Build Number: ${env.BUILD_NUMBER}</p>
+                <p>Status: ${currentBuild.result}</p>
+            """,
+            attachLog: true,
+        )
+    }
+}
