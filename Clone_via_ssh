@@ -1,0 +1,32 @@
+
+To clone private GitHub repositories using SSH
+----------------------------------------------
+1. Generate ssh key
+ ssh-keygen -t rsa -b 4096 -C "youremail@gmail.com.com"
+
+2.to start ssh agent
+eval "$(ssh-agent -s)"
+
+you see the output: Agent pid 12345
+
+3.Add the SSH Key to the Agent
+ssh-add C:/Users/QSP-Corp2/.ssh/id_rsa
+
+4.Add SSH Key to GitHub
+cat ~/.ssh/id_rsa.pub
+
+-Go to your GitHub account:
+-Navigate to Settings → SSH and GPG Keys.
+-Click New SSH Key.
+-In the Title field, enter a name for this key (e.g., "Windows PC").
+-Paste your SSH public key into the Key field.
+-Click Add SSH Key.
+
+5.Test the SSH Connection
+ssh -T git@github.com
+
+On success, you'll see this message: Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+
+6.Test by cloning the repository
+git clone git@github.com:username/repo-name.git
+  
