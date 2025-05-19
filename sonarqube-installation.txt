@@ -1,8 +1,10 @@
-yum install unzip
+sudo apt update
 
-adduser sonarqube
+sudo apt install unzip
 
-passwd sonarqube
+sudo adduser sonarqube
+
+sudo passwd sonarqube
 
 su - sonarqube
 
@@ -10,10 +12,10 @@ wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.8.100
 
 unzip *
 
-chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chmod -R 755 /home/sonarqube/sonarqube-9.9.8.100196
 
-chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.9.8.100196
 
-cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+cd sonarqube-9.9.8.100196/bin/linux-x86-64/
 
 ./sonar.sh start
