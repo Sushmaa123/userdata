@@ -8,3 +8,17 @@ To install WSL on windows10
   TO enable virtualization
   --------------------------
   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+
+server {
+    listen 80;
+    server_name cloudlearn.tech www.cloudlearn.tech;
+
+    location / {
+        proxy_pass http://localhost:8082;   # Point to your app container port on the host
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
