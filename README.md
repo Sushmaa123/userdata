@@ -10,7 +10,7 @@ To install WSL on windows10
   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
 
-server {
+"server {
     listen 80;
     server_name cloudlearn.tech;
     location / {
@@ -20,5 +20,5 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
-    }
+    }"
 
